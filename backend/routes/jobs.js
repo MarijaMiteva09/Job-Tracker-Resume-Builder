@@ -39,4 +39,15 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+
+// GET job by ID
+router.get('/:id', (req, res) => {
+  db.query('SELECT * FROM jobs WHERE id = ?', [req.params.id], (err, results) => {
+    if (err) return res.status(500).json({ error: err.message })
+    if (results.length === 0) return res.status(404).json({ error: 'Job not found' })
+    res.json(results[0])
+  })
+})
+
+
 module.exports = router;
