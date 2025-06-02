@@ -1,6 +1,12 @@
 <template>
   <div class="job-list">
     <h1>Job List</h1>
+
+    <!-- Build Resume Button -->
+    <router-link to="/resume-builder">
+      <button class="resume-button">📝 Build Resume</button>
+    </router-link>
+
     <div v-if="loading">Loading jobs...</div>
     <div v-else>
       <ul v-if="jobs.length">
@@ -19,7 +25,6 @@
 
 <script>
 import axios from 'axios'
-import { useRouter } from 'vue-router'
 
 export default {
   data() {
@@ -64,6 +69,16 @@ export default {
 .job-list {
   padding: 20px;
   font-family: Arial, sans-serif;
+}
+
+.resume-button {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .job-item {
